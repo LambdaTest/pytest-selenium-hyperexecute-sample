@@ -1,4 +1,4 @@
-# How To run Selenium automation tests on Hypertest (using PyTest framework)
+# How to run Selenium automation tests on Hypertest (using PyTest framework)
 
 Download the concierge binary corresponding to the host operating system. It is recommended to download the binary in the project's Parent Directory.
 
