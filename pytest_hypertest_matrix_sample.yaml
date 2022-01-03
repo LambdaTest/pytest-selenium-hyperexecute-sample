@@ -1,0 +1,15 @@
+---
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+matrix:
+  os: [win]
+  files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
+# Export LambdaTest environment variables
+env:
+  LT_USERNAME: himanshujlambdatest
+  LT_ACCESS_KEY: zEGTJf8dFmJynRcgnd4mMUol1UPr4UJHRkVQH3IOMoCUCCPhOo 
+pre:
+  -  pip3 install -r requirements.txt
+testSuites:
+  - pytest -s  $files

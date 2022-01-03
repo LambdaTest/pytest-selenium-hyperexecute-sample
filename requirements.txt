@@ -1,0 +1,4 @@
+selenium>=3.14
+pytest-selenium
+flake8
+autopep8
