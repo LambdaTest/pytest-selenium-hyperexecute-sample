@@ -1,4 +1,4 @@
-# How to run Selenium automation tests on Hypertest (using PyTest framework)
+# How to run Selenium automation tests on HyperTest (using PyTest framework)
 
 Download the concierge binary corresponding to the host operating system. It is recommended to download the binary in the project's Parent Directory.
 
@@ -10,7 +10,7 @@ Download the concierge binary corresponding to the host operating system. It is 
 
 ## Running tests in PyTest using the Matrix strategy
 
-Matrix YAML file (pytest_hypertest_matrix_sample.yaml) in the repo contains the following configuration:
+Matrix YAML file (*pytest_hypertest_matrix_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -26,7 +26,7 @@ The target platform is set to Windows
  os: [win]
 ```
 
-Python files in the 'tests' folder contain the 'tests' that will be run in parallel on the Hypertest grid
+Python files in the 'tests' folder contain the 'tests' that will be run in parallel on the HyperTest grid
 
 ```yaml
 files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
@@ -59,7 +59,7 @@ cacheDirectories:
   - CacheDir
 ```
 
-Content under the *pre* directive is the pre-condition that will be run before the tests are executed on Hypertest grid. The *--cache-dir* option in *pip3* is used for specifying the cache directory. It is important to note that downloaded packages that are cached are securely uploaded to a secure upload, before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
+Content under the *pre* directive is the pre-condition that will be run before the tests are executed on HyperTest grid. The *--cache-dir* option in *pip3* is used for specifying the cache directory. It is important to note that downloaded packages that are cached are securely uploaded to a secure upload, before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
 
 ```yaml
 pip3 install -r requirements.txt  --cache-dir CacheDir
@@ -79,24 +79,24 @@ upload:
   - reports/
 ```
 
-The *testSuites* object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are added in an array (with a '-' preceding each item). In the current YAML file, the pytest command to run tests in *.py* files mentioned as array to *files* key are executed on Hypertest grid
+The *testSuites* object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are added in an array (with a '-' preceding each item). In the current YAML file, the pytest command to run tests in *.py* files mentioned as array to *files* key are executed on HyperTest grid
 
 ```yaml
 testSuites:
   - pytest -s --verbose --html=reports/report.html $files
 ```
 
-The [user_name and access_key of LambdaTest](https://accounts.lambdatest.com/detail/profile) is appended to the *concierge* command using the **--user** and **--key** command-line options. The CLI option **--config** is used for providing the custom Hypertest YAML file (e.g. pytest_hypertest_matrix_sample.yaml). Run the following command on the terminal to trigger the tests in Pytest files on the Hypertest grid.
+The [user_name and access_key of LambdaTest](https://accounts.lambdatest.com/detail/profile) is appended to the *concierge* command using the **--user** and **--key** command-line options. The CLI option **--config** is used for providing the custom HyperTest YAML file (e.g. pytest_hypertest_matrix_sample.yaml). Run the following command on the terminal to trigger the tests in Pytest files on the HyperTest grid.
 
 ```bash
 ./concierge --user LT_USERNAME --key LT_ACCESS_KEY --download-artifacts --config yaml/pytest_hypertest_matrix_sample.yaml --verbose
 ```
 
-Visit [Hypertest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
 ## Running tests using PyTest using the Auto-Split strategy
 
-Auto-Split YAML file (pytest_hypertest_autosplit_sample.yaml) in the repo contains the following configuration:
+Auto-Split YAML file (*pytest_hypertest_autosplit_sample.yaml*) in the repo contains the following configuration:
 
 ```yaml
 globalTimeout: 90
@@ -118,7 +118,7 @@ Auto-split is set to true in the YAML file.
  autosplit: true
 ``` 
 
-*retryOnFailure* is set to True which instructs HyperTest to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a pass. The concurrency (i.e. number of parallel sessions) is set to 2.
+*retryOnFailure* is set to true which instructs HyperTest to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a pass. The concurrency (i.e. number of parallel sessions) is set to 2.
 
 ```yaml
   retryOnFailure: true
@@ -153,17 +153,17 @@ cacheDirectories:
   - CacheDir
 ```
 
-Content under the *pre* directive is the pre-condition that will be run before the tests are executed on Hypertest grid. The *--cache-dir* option in *pip3* is used for specifying the cache directory. It is important to note that downloaded packages that are cached are securely uploaded to a secure upload, before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
+Content under the *pre* directive is the pre-condition that will be run before the tests are executed on HyperTest grid. The *--cache-dir* option in *pip3* is used for specifying the cache directory. It is important to note that downloaded packages that are cached are securely uploaded to a secure upload, before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
 
 ```yaml
 pip3 install -r requirements.txt  --cache-dir CacheDir
 ```
 
-The *post* directive contains a list of commands that run as a part of post-test execution. Here, the contents of *yaml/pytest_hypertest_matrix_sample.yaml* are read using cat as a part of post step. 
+The *post* directive contains a list of commands that run as a part of post-test execution. Here, the contents of *yaml/pytest_hypertest_autosplit_sample.yaml* are read using cat as a part of post step. 
 
 ```yaml
 post:
-  - cat yaml/pytest_hypertest_matrix_sample.yaml
+  - cat yaml/pytest_hypertest_autosplit_sample.yaml
 ```
 
 The *upload* directive contains an array of entries for requesting HyperTest to perform certain actions (e.g.upload Artifacts - files, reports, etc.) after the test (or task) completion. The test artifacts from the respective VM are downloaded using the *--download-artifacts* option provided by Concierge CLI. In the provided sample, the *reports* folder that contains the test report is downloaded on the local machine.
@@ -192,10 +192,10 @@ The *testRunnerCommand* contains the command that is used for triggering the tes
 testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
 ```
 
-Run the following command on the terminal to trigger the tests in Python files on the Hypertest grid.
+Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid.
 
 ```bash
 ./concierge --user LT_USERNAME --key LT_ACCESS_KEY --config yaml/pytest_hypertest_autosplit_sample.yaml --verbose
 ```
 
-Visit [Hypertest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
