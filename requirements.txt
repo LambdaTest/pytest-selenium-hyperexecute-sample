@@ -3,3 +3,4 @@ pytest-selenium
 flake8
 autopep8
 pytest-order
+pytest-html
