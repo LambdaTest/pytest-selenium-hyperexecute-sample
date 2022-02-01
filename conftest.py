@@ -11,6 +11,7 @@ def driver(request):
     desired_caps = {}
 
     browser = {
+        # "platform": "MacOS Monterey",
         "platform": "Windows 10",
         "browserName": "chrome",
         "version": "latest"

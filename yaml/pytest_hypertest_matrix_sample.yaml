@@ -5,10 +5,6 @@ testSuiteStep: 90
 matrix:
   os: [win]
   files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
-# Export LambdaTest environment variables
-env:
-  LT_USERNAME: LT_USERNAME
-  LT_ACCESS_KEY: LT_ACCESS_KEY
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:

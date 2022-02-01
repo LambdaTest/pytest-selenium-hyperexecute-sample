@@ -14,6 +14,7 @@ from selenium.webdriver.support.ui import Select
 
 @pytest.mark.usefixtures('driver')
 class TestLink:
+
     @pytest.mark.order(1)
     def test_input_forms(self, driver):
         action = ActionChains(driver)
