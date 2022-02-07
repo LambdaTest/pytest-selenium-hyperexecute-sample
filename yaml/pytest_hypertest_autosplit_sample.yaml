@@ -1,12 +1,19 @@
 ---
+version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
+
 runson: win
+
 autosplit: true
 retryOnFailure: true
+
 maxRetries: 5
 concurrency: 2
+
+mergeArtifacts: true
+
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
@@ -15,7 +22,18 @@ pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
   - cat yaml/pytest_hypertest_autosplit_sample.yaml
-upload:
-  - reports/
-testDiscoverer: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
+
+uploadArtefacts:
+  [
+    {
+      "name": "reports",
+      "path": ["reports/**"]
+    }
+  ]
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
+
 testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
