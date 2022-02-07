@@ -1,10 +1,14 @@
 ---
+version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
+
 matrix:
-  os: [win]
   files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
+
+runson: win
+
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
@@ -13,7 +17,16 @@ pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
   - cat yaml/pytest_hypertest_matrix_sample.yaml
-upload:
-  - reports/
+
+mergeArtifacts: true
+
+uploadArtefacts:
+  [
+    {
+      "name": "reports",
+      "path": ["reports/**"]
+    }
+  ]
+
 testSuites:
   - pytest -s --verbose --html=reports/report.html $files
