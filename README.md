@@ -289,11 +289,13 @@ uploadArtefacts:
 ```
 HyperTest also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on *Artefacts* button corresponding to the associated TestID.
 
-<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152527265-27011c1c-95ee-4ff5-ae56-e570a0c4391a.png">
+<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152773372-5a7c7ba3-86c3-44d9-bfb5-52d07a7dc95c.png">
 
 Now, you can download the artefacts by clicking on the *Download* button as shown below:
 
-<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152527278-57a071f2-7b17-4a2a-822a-7bf9759a7531.png">
+<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152773397-245bf7a8-4351-45ad-a6f5-6ea16baf2ce8.png">
+
+<img width="1429" alt="pytest_autosplit_artefacts_3" src="https://user-images.githubusercontent.com/1688653/152774333-46ec33d5-60a6-465d-848e-4588a4fd2d8b.png">
 
 ### Test Execution
 
@@ -305,13 +307,13 @@ The CLI option *--config* is used for providing the custom HyperTest YAML file (
 
 Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
-<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152155403-969161d7-3d0c-4238-b80a-a63c88ea1023.png">
+<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152773372-5a7c7ba3-86c3-44d9-bfb5-52d07a7dc95c.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
-<img width="1412" alt="pytest_autosplit_cli1_execution" src="https://user-images.githubusercontent.com/1688653/152523181-7acbfa32-e53a-454e-b4a6-dd7834498482.png">
+<img width="1412" alt="pytest_autosplit_cli1_execution" src="https://user-images.githubusercontent.com/1688653/152773403-42901d45-8c21-4f6c-8d11-94e7301ee7e2.png">
 
-<img width="1408" alt="pytest_autosplit_cli2_execution" src="https://user-images.githubusercontent.com/1688653/152523202-7da45332-560c-4e9b-b77b-8e750faea20d.png">
+<img width="1408" alt="pytest_autosplit_cli2_execution" src="https://user-images.githubusercontent.com/1688653/152773425-7d5581fd-6486-4700-bacc-bb5f76c2f4eb.png">
 
 ## Secrets Management
 
