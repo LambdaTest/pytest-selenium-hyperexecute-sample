@@ -331,11 +331,11 @@ HyperTest lets you navigate from/to *Test Logs* in Automation Dashboard from/to 
 
 Shown below is the HyperTest Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1238" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152553665-9411f98c-e8de-487a-97a7-04310f8ef43a.png">
+<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152775341-1fb6605c-cdc3-4b21-b4ce-9dbb95933117.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperTest grid:
 
-<img width="1425" alt="pytest_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152553689-817191b9-db5b-4fa9-a233-df1779929191.png">
+<img width="1429" alt="pytest_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152775366-5bf96543-98a6-4977-bf48-8ccfd8948538.png">
 
 ## We are here to help you :)
 * LambdaTest Support: [support@lambdatest.com](mailto:support@lambdatest.com)
