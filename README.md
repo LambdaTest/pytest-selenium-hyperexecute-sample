@@ -150,11 +150,11 @@ uploadArtefacts:
 
 HyperTest also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on Artefacts button corresponding to the associated TestID.
 
-<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152557067-5a7a6340-b4de-42c4-8805-de2ba403b851.png">
+<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152767912-387e5657-d5b7-40fd-a2dd-f66257be64dc.png">
 
 Now, you can download the artefacts by clicking on the Download button as shown below:
 
-<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152557101-1216351b-5461-4729-8d26-a1ab2def068e.png">
+<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152768258-5f89c6e4-0945-4b67-a65e-aa9946e6f1b0.png">
 
 ## Test Execution
 
@@ -166,13 +166,13 @@ The CLI option *--config* is used for providing the custom HyperTest YAML file (
 
 Visit [HyperTest Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
 
-<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/152155422-bca002b1-4331-4b7e-82e2-7b3588391dc0.png">
+<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/152767912-387e5657-d5b7-40fd-a2dd-f66257be64dc.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
-<img width="1413" alt="pytest_cli_execution" src="https://user-images.githubusercontent.com/1688653/152514085-8b56de2b-4b92-4b81-a94d-58757f9cb3f7.png">
+<img width="1413" alt="pytest_cli1_execution" src="https://user-images.githubusercontent.com/1688653/152768986-5df7b864-16c2-472c-8254-d51099b6bbad.png">
 
-<img width="1101" alt="pytest_cli2_execution" src="https://user-images.githubusercontent.com/1688653/152516090-b06d3d80-145f-477a-b1ed-25c1d0be3be5.png">
+<img width="1101" alt="pytest_cli2_execution" src="https://user-images.githubusercontent.com/1688653/152770260-d2100961-06bd-464a-b560-97f5bddef199.png">
 
 ## Auto-Split Execution with PyTest
 
