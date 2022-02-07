@@ -241,7 +241,7 @@ pip3 install -r requirements.txt  --cache-dir CacheDir
 
 ## Post Steps
 
-The *post* directive contains a list of commands that run as a part of post-test execution. Here, the contents of *yaml/pyunit_hypertest_autosplit_sample.yaml* are read using the *cat* command as a part of the post step. 
+The *post* directive contains a list of commands that run as a part of post-test execution. Here, the contents of *yaml/pytest_hypertest_autosplit_sample.yaml* are read using the *cat* command as a part of the post step. 
 
 ```yaml
 post:
@@ -297,7 +297,7 @@ Now, you can download the artefacts by clicking on the *Download* button as show
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperTest YAML file (i.e. *yaml/pyunit_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid. The *--download-artifacts* option is used to inform HyperTest to download the artefacts for the job.
+The CLI option *--config* is used for providing the custom HyperTest YAML file (i.e. *yaml/pytest_hypertest_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperTest grid. The *--download-artifacts* option is used to inform HyperTest to download the artefacts for the job.
 
 ```bash
 ./concierge --download-artifacts --verbose --config yaml/pytest_hypertest_autosplit_sample.yaml
