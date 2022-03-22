@@ -19,7 +19,7 @@ cacheDirectories:
 pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
-  - cat yaml/pytest_hypertest_matrix_sample.yaml
+  - cat yaml/pytest_hyperexecute_matrix_sample.yaml
 
 mergeArtifacts: true
 
