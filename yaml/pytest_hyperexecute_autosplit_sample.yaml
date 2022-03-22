@@ -24,7 +24,7 @@ cacheDirectories:
 pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
-  - cat yaml/pytest_hypertest_autosplit_sample.yaml
+  - cat yaml/pytest_hyperexecute_autosplit_sample.yaml
 
 uploadArtefacts:
   [
