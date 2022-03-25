@@ -25,14 +25,11 @@ pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
   - cat yaml/pytest_hyperexecute_autosplit_sample.yaml
-
+  
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**  
 
 testDiscovery:
   type: raw
