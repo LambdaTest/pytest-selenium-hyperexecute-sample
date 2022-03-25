@@ -24,12 +24,9 @@ post:
 mergeArtifacts: true
 
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**
 
 testSuites:
   - pytest -s --verbose --html=reports/report.html $files
