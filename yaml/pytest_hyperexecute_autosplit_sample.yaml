@@ -14,8 +14,8 @@ concurrency: 2
 
 mergeArtifacts: true
 
-env:
-  PAT: ${{ .secrets.testKey }}
+# env:
+#  PAT: ${{ .secrets.testKey }}
 
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
