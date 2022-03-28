@@ -152,12 +152,9 @@ The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files,
 mergeArtifacts: true
 
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**
 ```
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
@@ -292,13 +289,11 @@ The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files,
 mergeArtifacts: true
 
 uploadArtefacts:
-  [
-    {
-      "name": "reports",
-      "path": ["reports/**"]
-    }
-  ]
+  - name: TestReports
+    path:
+    - reports/**
 ```
+
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on *Artifacts* button corresponding to the associated TestID.
 
 <img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160465444-ea8400a5-a3bf-41ad-98f0-bc70fb9bb284.png">
