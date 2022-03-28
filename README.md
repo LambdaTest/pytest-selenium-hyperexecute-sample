@@ -162,11 +162,11 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on Artefacts button corresponding to the associated TestID.
 
-<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152767912-387e5657-d5b7-40fd-a2dd-f66257be64dc.png">
+<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160328061-7f20fcfc-0b98-4aac-b495-7f3147d9dfa5.png">
 
 Now, you can download the artefacts by clicking on the Download button as shown below:
 
-<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152768258-5f89c6e4-0945-4b67-a65e-aa9946e6f1b0.png">
+<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160328072-a4585e4a-c8c0-43bc-b229-a823467d63ac.png">
 
 ## Test Execution
 
@@ -178,7 +178,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
 
-<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/152767912-387e5657-d5b7-40fd-a2dd-f66257be64dc.png">
+<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160328061-7f20fcfc-0b98-4aac-b495-7f3147d9dfa5.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -301,13 +301,11 @@ uploadArtefacts:
 ```
 HyperExecute also facilitates the provision to download the artefacts on your local machine. To download the artefacts, click on *Artefacts* button corresponding to the associated TestID.
 
-<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/152773372-5a7c7ba3-86c3-44d9-bfb5-52d07a7dc95c.png">
+<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
 
 Now, you can download the artefacts by clicking on the *Download* button as shown below:
 
-<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/152773397-245bf7a8-4351-45ad-a6f5-6ea16baf2ce8.png">
-
-<img width="1429" alt="pytest_autosplit_artefacts_3" src="https://user-images.githubusercontent.com/1688653/152774333-46ec33d5-60a6-465d-848e-4588a4fd2d8b.png">
+<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160328936-e777bea4-982b-4a32-b6ea-222df8d734d2.png">
 
 ### Test Execution
 
@@ -319,7 +317,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
-<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/152773372-5a7c7ba3-86c3-44d9-bfb5-52d07a7dc95c.png">
+<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -350,7 +348,7 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/152775341-1fb6605c-cdc3-4b21-b4ce-9dbb95933117.png">
+<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
