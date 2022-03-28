@@ -162,11 +162,11 @@ uploadArtefacts:
 
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
 
-<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160328061-7f20fcfc-0b98-4aac-b495-7f3147d9dfa5.png">
+<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
 
 Now, you can download the artifacts by clicking on the Download button as shown below:
 
-<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160328072-a4585e4a-c8c0-43bc-b229-a823467d63ac.png">
+<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160465440-06cfcdf9-c990-4785-b2d4-81728c2bdcf6.png">
 
 ## Test Execution
 
@@ -178,7 +178,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
 
-<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160328061-7f20fcfc-0b98-4aac-b495-7f3147d9dfa5.png">
+<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -301,11 +301,11 @@ uploadArtefacts:
 ```
 HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on *Artifacts* button corresponding to the associated TestID.
 
-<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
+<img width="1235" alt="pytest_autosplit_artefacts_1" src="https://user-images.githubusercontent.com/1688653/160465444-ea8400a5-a3bf-41ad-98f0-bc70fb9bb284.png">
 
 Now, you can download the artifacts by clicking on the *Download* button as shown below:
 
-<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160328936-e777bea4-982b-4a32-b6ea-222df8d734d2.png">
+<img width="1420" alt="pytest_autosplit_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160465448-b06e3079-fbea-487a-93c3-413f024a6699.png">
 
 ### Test Execution
 
@@ -317,7 +317,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
 
-<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
+<img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160465444-ea8400a5-a3bf-41ad-98f0-bc70fb9bb284.png">
 
 Shown below is the execution screenshot when the YAML file is triggered from the terminal:
 
@@ -348,7 +348,7 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160328929-a6bafcab-50a4-47a0-83d7-f4a9863d4999.png">
+<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
