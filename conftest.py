@@ -45,7 +45,7 @@ def driver(request):
         else:
             browser.execute_script("lambda-status=passed")
             browser.quit()
-    
+
     request.addfinalizer(fin)
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
