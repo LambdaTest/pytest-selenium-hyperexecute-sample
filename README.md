@@ -1,4 +1,4 @@
-<img height="100" alt="hypertest_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
 
 HyperExecute is a smart test orchestration platform to run end-to-end Selenium tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
 
@@ -173,7 +173,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 ./concierge --download-artifacts --config --verbose yaml/pytest_hyperexecute_matrix_sample.yaml
 ```
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution:
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
 
 <img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
 
@@ -310,7 +310,7 @@ The CLI option *--config* is used for providing the custom HyperExecute YAML fil
 ./concierge --download-artifacts --verbose --config yaml/pytest_hyperexecute_autosplit_sample.yaml
 ```
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hypertest) to check the status of execution
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
 
 <img width="1414" alt="pytest_autosplit_execution" src="https://user-images.githubusercontent.com/1688653/160465444-ea8400a5-a3bf-41ad-98f0-bc70fb9bb284.png">
 
@@ -343,7 +343,7 @@ HyperExecute lets you navigate from/to *Test Logs* in Automation Dashboard from/
 
 Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
 
-<img width="1429" alt="pytest_hypertest_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
+<img width="1429" alt="pytest_hyperexecute_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160465435-a4e34fb9-f882-4a2c-981a-8b1c07c9d2cd.png">
 
 Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
 
