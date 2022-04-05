@@ -12,7 +12,7 @@ def driver(request):
 
     browser = {
         # "platform": "MacOS Monterey",
-        "platform": "Windows 10",
+        "platform": os.environ.get("TARGET_OS"),
         "browserName": "chrome",
         "version": "latest"
     }

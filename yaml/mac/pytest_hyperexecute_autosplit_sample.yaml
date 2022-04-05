@@ -2,9 +2,9 @@
 version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
-testSuiteStep: 150
+testSuiteStep: 90
 
-runson: win
+runson: mac
 
 autosplit: true
 retryOnFailure: true
@@ -14,8 +14,9 @@ concurrency: 2
 
 mergeArtifacts: true
 
-# env:
+env:
 #  PAT: ${{ .secrets.testKey }}
+ TARGET_OS: MacOS Catalina
 
 # Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
@@ -25,12 +26,12 @@ pre:
   - mkdir CacheDir
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
-  - cat yaml/pytest_hyperexecute_autosplit_sample.yaml
-  
+  - cat yaml/mac/pytest_hyperexecute_autosplit_sample.yaml
+
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**  
+    - reports/**
 
 testDiscovery:
   type: raw
