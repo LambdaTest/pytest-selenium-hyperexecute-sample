@@ -1,0 +1,6 @@
+hyperexecute.exe
+*.zip
+*.log
+artifacts
+artifacts-old
+logs
