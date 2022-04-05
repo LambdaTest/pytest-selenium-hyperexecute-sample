@@ -2,7 +2,7 @@
 version: 0.1
 globalTimeout: 90
 testSuiteTimeout: 90
-testSuiteStep: 90
+testSuiteStep: 150
 
 runson: win
 
