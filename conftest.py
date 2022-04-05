@@ -11,7 +11,6 @@ def driver(request):
     desired_caps = {}
 
     browser = {
-        # "platform": "MacOS Monterey",
         "platform": os.environ.get("TARGET_OS"),
         "browserName": "chrome",
         "version": "latest"
