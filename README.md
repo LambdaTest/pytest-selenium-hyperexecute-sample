@@ -16,14 +16,14 @@ To know more about how HyperExecute does intelligent Test Orchestration, do chec
    - [Download HyperExecute CLI](#download-hyperexecute-cli)
    - [Configure Environment Variables](#configure-environment-variables)
 
-* [Matrix Execution with PyTest](#matrix-execution-with-pytest)
+* [Auto-Split Execution with PyTest](#auto-split-execution-with-pytest)
    - [Core](#core)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
    - [Post Steps](#post-steps)
-   - [Artifacts Management](#artifacts-management)
-   - [Test Execution](#test-execution)
+   - [Artifacts Management](#artifacts-management-1)
+   - [Test Execution](#test-execution-1)
 
-* [Auto-Split Execution with PyTest](#auto-split-execution-with-pytest)
+* [Matrix Execution with PyTest](#matrix-execution-with-pytest)
    - [Core](#core-1)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching-1)
    - [Post Steps](#post-steps-1)
@@ -71,129 +71,6 @@ For Windows:
 set LT_USERNAME=LT_USERNAME
 set LT_ACCESS_KEY=LT_ACCESS_KEY
 ```
-
-# Matrix Execution with PyTest
-
-Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
-
-Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
-
-### Core
-
-In the current example, matrix YAML file (*yaml/win/pytest_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
-```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
- 
-The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
-
-```yaml
-runson: win
-```
-
-Python files in the 'tests' folder contain the test suites run on the HyperExecute grid. In the example, the tests in the files *tests/lt_sample_todo.py* and *tests/lt_selenium_playground.py* run in parallel using the specified input combinations.
-
-```yaml
-files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
-```
-
-The *testSuites* object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are put in an array (with a '-' preceding each item). The Python command is used to run tests in *.py* files. The files are mentioned as an array to the *files* key that is a part of the matrix.
-
-```yaml
-testSuites:
-  - pytest -s --verbose --html=reports/report.html $files
-```
-
-### Pre Steps and Dependency Caching
-
-Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories.
-
-```yaml
-cacheKey: '{{ checksum "requirements.txt" }}'
-```
-
-Set the array of files & directories to be cached. In the example, all the packages will be cached in the *CacheDir* directory.
-
-```yaml
-cacheDirectories:
-  - CacheDir
-```
-
-Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the packages listed in *requirements.txt* are installed using the *pip3* command.
-
-The *--cache-dir* option is used for specifying the location of the directory used for caching the packages (i.e. *CacheDir*). It is important to note that downloaded cached packages are securely uploaded to a secure cloud before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
-
-```yaml
-pre:
-  - pip3 install -r requirements.txt --cache-dir CacheDir
-```
-
-### Post Steps
-
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/pytest_hyperexecute_matrix_sample.yaml*
-
-```yaml
-post:
-  - cat yaml/win/pytest_hyperexecute_matrix_sample.yaml
-```
-
-### Artifacts Management
-
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
-
-The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports* that contains the test reports).
-
-```yaml
-mergeArtifacts: true
-
-uploadArtefacts:
-  - name: TestReports
-    path:
-    - reports/**
-```
-
-HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
-
-<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162379474-ddf21135-5481-4f24-816d-17b09ba6dd00.png">
-
-Now, you can download the artifacts by clicking on the Download button as shown below:
-
-<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160465440-06cfcdf9-c990-4785-b2d4-81728c2bdcf6.png">
-
-## Test Execution
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_matrix_sample.yaml* or *yaml/linux/pytest_hyperexecute_matrix_sample.yaml*).
-
-#### Execute PyTest tests using Matrix mechanism on Windows platform
-
-Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
-
-```bash
-./hyperexecute --download-artifacts --config --verbose yaml/win/pytest_hyperexecute_matrix_sample.yaml
-```
-
-#### Execute PyTest tests using Matrix mechanism on Linux platform
-
-Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
-
-```bash
-./hyperexecute --download-artifacts --config --verbose yaml/linux/pytest_hyperexecute_matrix_sample.yaml
-```
-
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
-
-<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/162379507-7da7c2de-f1d3-4d21-9f49-08e7692569e4.png">
-
-Shown below is the execution screenshot when the YAML file is triggered from the terminal:
-
-<img width="1413" alt="pytest_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162379514-08d3b348-7961-4983-8291-8c8e3c059448.png">
-
-<img width="1101" alt="pytest_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162379516-299f0d3f-7de1-4f9a-a817-d6e767e5fea8.png">
 
 ## Auto-Split Execution with PyTest
 
@@ -343,6 +220,129 @@ Shown below is the execution screenshot when the YAML file is triggered from the
 <img width="1412" alt="pytest_autosplit_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162379499-e3637ce2-5191-4d8d-839d-4801a20e99c4.png">
 
 <img width="1408" alt="pytest_autosplit_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162379502-ba4e3db5-55db-4dca-aaae-d2757747a9c8.png">
+
+# Matrix Execution with PyTest
+
+Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a *key:value* pair where value is an array of strings.
+
+Also, the *key:value* pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
+
+### Core
+
+In the current example, matrix YAML file (*yaml/win/pytest_hyperexecute_matrix_sample.yaml*) in the repo contains the following configuration:
+
+```yaml
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+```
+
+Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
+ 
+The target platform is set to Windows. Please set the *[runson]* key to *[mac]* if the tests have to be executed on the macOS platform.
+
+```yaml
+runson: win
+```
+
+Python files in the 'tests' folder contain the test suites run on the HyperExecute grid. In the example, the tests in the files *tests/lt_sample_todo.py* and *tests/lt_selenium_playground.py* run in parallel using the specified input combinations.
+
+```yaml
+files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
+```
+
+The *testSuites* object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are put in an array (with a '-' preceding each item). The Python command is used to run tests in *.py* files. The files are mentioned as an array to the *files* key that is a part of the matrix.
+
+```yaml
+testSuites:
+  - pytest -s --verbose --html=reports/report.html $files
+```
+
+### Pre Steps and Dependency Caching
+
+Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories.
+
+```yaml
+cacheKey: '{{ checksum "requirements.txt" }}'
+```
+
+Set the array of files & directories to be cached. In the example, all the packages will be cached in the *CacheDir* directory.
+
+```yaml
+cacheDirectories:
+  - CacheDir
+```
+
+Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the packages listed in *requirements.txt* are installed using the *pip3* command.
+
+The *--cache-dir* option is used for specifying the location of the directory used for caching the packages (i.e. *CacheDir*). It is important to note that downloaded cached packages are securely uploaded to a secure cloud before the execution environment is auto-purged after build completion. Please modify *requirements.txt* as per the project requirements.
+
+```yaml
+pre:
+  - pip3 install -r requirements.txt --cache-dir CacheDir
+```
+
+### Post Steps
+
+Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/win/pytest_hyperexecute_matrix_sample.yaml*
+
+```yaml
+post:
+  - cat yaml/win/pytest_hyperexecute_matrix_sample.yaml
+```
+
+### Artifacts Management
+
+The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
+
+The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the directory (i.e. *reports* that contains the test reports).
+
+```yaml
+mergeArtifacts: true
+
+uploadArtefacts:
+  - name: TestReports
+    path:
+    - reports/**
+```
+
+HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
+
+<img width="1425" alt="pytest_matrix_artefacts_1" src="https://user-images.githubusercontent.com/1688653/162379474-ddf21135-5481-4f24-816d-17b09ba6dd00.png">
+
+Now, you can download the artifacts by clicking on the Download button as shown below:
+
+<img width="1425" alt="pytest_matrix_artefacts_2" src="https://user-images.githubusercontent.com/1688653/160465440-06cfcdf9-c990-4785-b2d4-81728c2bdcf6.png">
+
+## Test Execution
+
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_matrix_sample.yaml* or *yaml/linux/pytest_hyperexecute_matrix_sample.yaml*).
+
+#### Execute PyTest tests using Matrix mechanism on Windows platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --config --verbose yaml/win/pytest_hyperexecute_matrix_sample.yaml
+```
+
+#### Execute PyTest tests using Matrix mechanism on Linux platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --config --verbose yaml/linux/pytest_hyperexecute_matrix_sample.yaml
+```
+
+Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
+
+<img width="1414" alt="pytest_matrix_execution" src="https://user-images.githubusercontent.com/1688653/162379507-7da7c2de-f1d3-4d21-9f49-08e7692569e4.png">
+
+Shown below is the execution screenshot when the YAML file is triggered from the terminal:
+
+<img width="1413" alt="pytest_cli1_execution" src="https://user-images.githubusercontent.com/1688653/162379514-08d3b348-7961-4983-8291-8c8e3c059448.png">
+
+<img width="1101" alt="pytest_cli2_execution" src="https://user-images.githubusercontent.com/1688653/162379516-299f0d3f-7de1-4f9a-a817-d6e767e5fea8.png">
 
 ## Secrets Management
 
