@@ -20,7 +20,7 @@ To know more about how HyperExecute does intelligent Test Orchestration, do chec
    - [Core](#core)
    - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
    - [Post Steps](#post-steps)
-   - [Artifacts Management](#artifacts-management-1)
+   - [Artifacts Management](#artifacts-management)
    - [Test Execution](#test-execution-1)
 
 * [Matrix Execution with PyTest](#matrix-execution-with-pytest)
