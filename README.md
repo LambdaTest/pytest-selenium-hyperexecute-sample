@@ -99,7 +99,7 @@ export HYPERXECUTE_PLATFORM=macOS Catalina
 Host OS: Windows
 
 ```bash
-set HYPERXECUTE_PLATFORM=wind10
+set HYPERXECUTE_PLATFORM=win10
 set HYPERXECUTE_PLATFORM=linux
 set HYPERXECUTE_PLATFORM=macOS Catalina
 ```
