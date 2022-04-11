@@ -167,10 +167,22 @@ Now, you can download the artifacts by clicking on the Download button as shown 
 
 ## Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_matrix_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_matrix_sample.yaml* or *yaml/linux/pytest_hyperexecute_matrix_sample.yaml*).
+
+#### Execute PyTest tests using Matrix mechanism on Windows platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
 ./hyperexecute --download-artifacts --config --verbose yaml/win/pytest_hyperexecute_matrix_sample.yaml
+```
+
+#### Execute PyTest tests using Matrix mechanism on Linux platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --config --verbose yaml/linux/pytest_hyperexecute_matrix_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
@@ -304,10 +316,22 @@ Now, you can download the artifacts by clicking on the *Download* button as show
 
 ### Test Execution
 
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_autosplit_sample.yaml*). Run the following command on the terminal to trigger the tests in Python files on the HyperExecute grid. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *yaml/win/pytest_hyperexecute_autosplit_sample.yaml* for Windows and *yaml/linux/pytest_hyperexecute_autosplit_sample.yaml* for Linux).
+
+#### Execute PyTest tests using Autosplit mechanism on Windows platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
 
 ```bash
-./hyperexecute --download-artifacts --verbose --config yaml/win/pytest_hyperexecute_autosplit_sample.yaml
+./hyperexecute --download-artifacts --config --verbose yaml/win/pytest_hyperexecute_autosplit_sample.yaml
+```
+
+#### Execute PyTest tests using Autosplit mechanism on Linux platform
+
+Run the following command on the terminal to trigger the tests in Python files with HyperExecute platform set to Linux. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job.
+
+```bash
+./hyperexecute --download-artifacts --config --verbose yaml/linux/pytest_hyperexecute_autosplit_sample.yaml
 ```
 
 Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
