@@ -87,10 +87,5 @@ class TestLink:
         # Click on the Drag & Drop Sliders
         drag_drop = driver.find_element(By.XPATH, "//a[.='Drag & Drop Sliders']")
         drag_drop.click()
-
         time.sleep(10)
-
-        move_slider = driver.find_element(By.CSS_SELECTOR, "[value='20']")
-        driver.execute_javascript("arguments[0].value = arguments[1];", move_slider, 40);
-        time.sleep(5)
         print("Progress Bar Test Complete")
