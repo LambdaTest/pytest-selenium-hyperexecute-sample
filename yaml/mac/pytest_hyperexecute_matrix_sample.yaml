@@ -30,4 +30,4 @@ uploadArtefacts:
     - reports/**
 
 testSuites:
-  - pytest -s --verbose --html=reports/report.html $files
+  - python3 -m pytest -s --verbose --html=reports/report.html $files
