@@ -8,7 +8,9 @@ matrix:
   files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
 
 runson: linux
+retryOnFailure: true
 
+maxRetries: 1
 env:
 #  PAT: ${{ .secrets.testKey }}
  TARGET_OS: LINUX
