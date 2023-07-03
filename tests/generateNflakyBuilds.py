@@ -294,12 +294,12 @@ class FirstSampleTest(unittest.TestCase):
         # finally:
         #     driver.quit()
 
-        
-#Old Statuses
+        #Passed Build
             if heading.is_displayed():
                 heading.click()
                 if test_id < 2:
                     driver.execute_script("window.alert('Passing command before idle timeout')")
+                    # driver.execute_script("lambda-status=failed")
                     driver.execute_script("lambda-status=passed")
                     logger.info("Test marked as passed.")
                 elif 2 <= test_id < 4:
@@ -307,23 +307,59 @@ class FirstSampleTest(unittest.TestCase):
                         driver.find_element(By.ID, "non_existent_element")
                     except WebDriverException:
                         logger.error("Failing command executed.")
-                    driver.execute_script("lambda-status=failed")
+                    # driver.execute_script("lambda-status=failed")
+                    driver.execute_script("lambda-status=passed")
                     logger.info("Test marked as failed.")
                 elif 4 <= test_id < 6:
                     try:
-                        driver.find_element(By.ID, "addbutton")
+                        # driver.find_element(By.ID, "addbutton")
+                        # driver.execute_script("lambda-status=failed")
+                        driver.execute_script("lambda-status=passed")
                         driver.find_element(By.ID, "addbutton2")
                     except WebDriverException:
                         logger.error("Element not found, moving on to quit the browser.")  # This command will fail, making the test flaky
                 else:
-                    driver.implicitly_wait(2)
+                    # driver.implicitly_wait(2)
                     try:
+                        # driver.find_element(By.ID, "addbutton2")
+                        # driver.execute_script("lambda-status=failed")
+                        driver.execute_script("lambda-status=passed")
                         driver.find_element(By.ID, "addbutton2")
                         logger.info("Test marked as completed.")
                     except WebDriverException:
                         logger.error("Element not found, moving on to quit the browser.")
         finally:
             driver.quit()
+
+# #Old Statuses
+#             if heading.is_displayed():
+#                 heading.click()
+#                 if test_id < 2:
+#                     driver.execute_script("window.alert('Passing command before idle timeout')")
+#                     driver.execute_script("lambda-status=passed")
+#                     logger.info("Test marked as passed.")
+#                 elif 2 <= test_id < 4:
+#                     try:
+#                         driver.find_element(By.ID, "non_existent_element")
+#                     except WebDriverException:
+#                         logger.error("Failing command executed.")
+#                     driver.execute_script("lambda-status=failed")
+#                     logger.info("Test marked as failed.")
+#                 elif 4 <= test_id < 6:
+#                     try:
+#                         driver.find_element(By.ID, "addbutton")
+#                         driver.find_element(By.ID, "addbutton2")
+#                     except WebDriverException:
+#                         logger.error("Element not found, moving on to quit the browser.")  # This command will fail, making the test flaky
+#                 else:
+#                     driver.implicitly_wait(2)
+#                     try:
+#                         driver.find_element(By.ID, "addbutton2")
+#                         logger.info("Test marked as completed.")
+#                     except WebDriverException:
+#                         logger.error("Element not found, moving on to quit the browser.")
+#         finally:
+#             driver.quit()
 
     def _test_single_build(self, build_num):
         for test_id, capabilities in enumerate(self.CAPS):
