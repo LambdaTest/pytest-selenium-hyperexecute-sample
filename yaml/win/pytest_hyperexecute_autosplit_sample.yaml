@@ -10,30 +10,20 @@ autosplit: true
 retryOnFailure: true
 
 maxRetries: 1
-concurrency: 2
+concurrency: 1
 
 mergeArtifacts: true
-
-env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: Windows 10
+jobLabel: [ '${DATE} - ${DAY}', 'HE-ATX']
 
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - CacheDir
 pre:
   - pip3 install -r requirements.txt --cache-dir CacheDir
-post:
-  - cat yaml/win/pytest_hyperexecute_autosplit_sample.yaml
-
-uploadArtefacts:
-  - name: TestReports
-    path:
-    - reports/**
 
 testDiscovery:
   type: raw
   mode: dynamic
-  command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
+  command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//' | uniq
 
-testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
+testRunnerCommand: python3 $test

@@ -1,6 +1,2 @@
-selenium==3.14
-pytest-selenium
-flake8
-autopep8
-pytest-order
-pytest-html
+selenium==4.8.0
+pytz
