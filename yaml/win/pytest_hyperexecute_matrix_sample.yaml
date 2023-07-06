@@ -33,3 +33,5 @@ uploadArtefacts:
 
 testSuites:
   - pytest -s --verbose --html=reports/report.html $files
+
+jobLabel: [selenium-pytest, win, matrix]
