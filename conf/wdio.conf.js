@@ -1,8 +1,19 @@
 const browser = (process.argv[5] || 'Chrome');
 // const WdioCaptureIt = require('lambdatest-test-case-analytics').default;
 let date = new Date();
-let istDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-let timestamp = `${istDate.getHours()}:${istDate.getMinutes()}:${istDate.getDate()} ${istDate.getSeconds()}:${istDate.getMonth() + 1}:${istDate.getFullYear()}`;
+
+// convert to IST
+let istDate = new Date(date.toLocaleString('en-US', {timeZone: 'Asia/Kolkata'}));
+
+let year = istDate.getFullYear();
+let month = ('0' + (istDate.getMonth()+1)).slice(-2); // months are zero indexed
+let day = ('0' + istDate.getDate()).slice(-2);
+let hours = ('0' + istDate.getHours()).slice(-2);
+let minutes = ('0' + istDate.getMinutes()).slice(-2);
+let seconds = ('0' + istDate.getSeconds()).slice(-2);
+
+let timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
 exports.config = {
   services: [
     ['lambdatest-test-case-analytics', {}],
