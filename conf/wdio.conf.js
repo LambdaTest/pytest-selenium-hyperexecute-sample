@@ -31,7 +31,7 @@ exports.config = {
       name: "TestCase Insights test",
       // build: "Test Case Insights ATX n=1, 3 testcases try5",
       // build: "Test Case Insights ATX n=2, 6 testcases try11",
-      build: `TestCase_Insights_build ${timestamp}`,
+      build: `TestCase_Insights_build_${timestamp}`,
       // build: "Test Case Insights ATX n=20, 60 testcases try2",
       visual: true,
       tags: ["ATX-testCaseInsights"],
