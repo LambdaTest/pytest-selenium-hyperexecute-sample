@@ -1,4 +1,4 @@
-describe('Test Case Insights Load Test', () => {
+describe('Test Case Insights Test', () => {
     const n = 2; // change this to the number of test cases you want
     let anyTestFailed = false;
 

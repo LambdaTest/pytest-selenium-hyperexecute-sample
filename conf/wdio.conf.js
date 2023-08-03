@@ -1,7 +1,8 @@
 const browser = (process.argv[5] || 'Chrome');
 // const WdioCaptureIt = require('lambdatest-test-case-analytics').default;
 let date = new Date();
-let timestamp = `${date.getHours()}:${date.getMinutes()}:${date.getDate()} ${date.getSeconds()}:${date.getMonth() + 1}:${date.getFullYear()}`; 
+let istDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+let timestamp = `${istDate.getHours()}:${istDate.getMinutes()}:${istDate.getDate()} ${istDate.getSeconds()}:${istDate.getMonth() + 1}:${istDate.getFullYear()}`;
 exports.config = {
   services: [
     ['lambdatest-test-case-analytics', {}],
@@ -19,7 +20,7 @@ exports.config = {
   user: process.env.LT_USERNAME,
   key: process.env.LT_ACCESS_KEY,
   buildName: process.env.LT_BUILD_NAME,
-  specs: ["./tests/specs/single_test.js"],
+  specs: ["./tests/specs/ATXtest.js"],
   exclude: [],
 
   capabilities: [
@@ -30,10 +31,10 @@ exports.config = {
       name: "TestCase Insights test",
       // build: "Test Case Insights ATX n=1, 3 testcases try5",
       // build: "Test Case Insights ATX n=2, 6 testcases try11",
-      build: `testCase Insights build ${timestamp}`,
+      build: `TestCase_Insights_build ${timestamp}`,
       // build: "Test Case Insights ATX n=20, 60 testcases try2",
       visual: true,
-      tags: ["testtags1","ATX-testtag"],
+      tags: ["ATX-testCaseInsights"],
       console: true,
       network: true,
       platformName: process.env.HYPEREXECUTE_PLATFORM || 'windows 10'  
