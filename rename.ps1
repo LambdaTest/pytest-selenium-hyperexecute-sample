@@ -1,0 +1,1 @@
+(Get-Content node_modules\wdio-lambdatest-service\build\constants.js) | Foreach-Object {$_ -replace 'https://api.lambdatest.com/automation/api/', 'https://stage-api.lambdatestinternal.com/automation/api/'} | Set-Content node_modules\wdio-lambdatest-service\build\constants.js
