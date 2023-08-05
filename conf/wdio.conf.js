@@ -38,7 +38,7 @@ exports.config = {
     {
       "LT:Options": {
       browserName: browser,
-      version: "latest",
+      version: 114,
       name: "TestCase Insights test",
       // build: "Test Case Insights ATX n=1, 3 testcases try5",
       // build: "Test Case Insights ATX n=2, 6 testcases try11",
