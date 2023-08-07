@@ -1,0 +1,38 @@
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+runson: mac
+# runson: win
+
+autosplit: true
+concurrency: 1
+tunnel: false
+cacheKey: '{{ checksum "package.json" }}'
+cacheDirectories:
+  - node_modules
+jobLabel: [ '${DATE}','ATX-testCaseInsights']
+runtime:
+  language: node
+  version: "18"
+preDirectives:
+  shell: powershell
+  # shell: bash
+  commands: 
+    - npm install
+    # - cat node_modules\wdio-lambdatest-service\build\constants.js
+    # - ls
+    # - powershell ./rename.ps1
+    # - cat node_modules\wdio-lambdatest-service\build\constants.js
+    - cat node_modules/wdio-lambdatest-service/build/constants.js
+    - ls
+    - chmod +x replace.sh
+    - ./replace.sh
+    - cat node_modules/wdio-lambdatest-service/build/constants.js
+testDiscovery:
+  type: raw
+  mode: dynamic
+  command: grep -lr 'describe' tests/specs/ATXtest.js
+  # command: cat test.txt
+# testRunnerCommand: npx wdio conf\wdio.conf.js --spec tests\specs\ATXtest.js
+testRunnerCommand: npx wdio conf/wdio.conf.js --spec tests/specs/ATXtest.js
