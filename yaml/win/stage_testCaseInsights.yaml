@@ -17,12 +17,18 @@ runtime:
   version: "18"
 preDirectives:
   shell: powershell
+  # shell: bash
   commands: 
     - npm install
     - cat node_modules\wdio-lambdatest-service\build\constants.js
     - ls
     - powershell ./rename.ps1
     - cat node_modules\wdio-lambdatest-service\build\constants.js
+    # - cat node_modules/wdio-lambdatest-service/build/constants.js
+    # - ls
+    # - chmod +x replace.sh
+    # - ./replace.sh
+    # - cat node_modules/wdio-lambdatest-service/build/constants.js
 testDiscovery:
   type: raw
   mode: dynamic
