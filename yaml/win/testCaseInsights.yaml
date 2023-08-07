@@ -3,7 +3,7 @@ globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 # runson: mac
-debug: true
+# debug: true
 runson: win
 
 autosplit: true
