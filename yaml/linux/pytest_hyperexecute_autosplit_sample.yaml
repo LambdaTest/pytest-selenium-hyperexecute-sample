@@ -22,6 +22,8 @@ cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - CacheDir
 pre:
+  - python -m pip install --upgrade pip
+  - pip3 install py-xml
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
   - cat yaml/linux/pytest_hyperexecute_autosplit_sample.yaml
