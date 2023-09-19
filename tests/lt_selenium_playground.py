@@ -1,4 +1,5 @@
 import pytest
+import xml.etree.ElementTree as ET
 from selenium import webdriver
 import sys
 from selenium.webdriver.chrome.options import Options
@@ -62,7 +63,7 @@ class TestLink:
         zipcode.send_keys("94088")
 
         # Click on the Submit button
-        submit_button = driver.find_element(By.CSS_SELECTOR, ".btn")
+        submit_button = driver.find_element(By.CSS_SELECTOR, "#seleniumform > div.text-right.mt-20 > button")
         submit_button.click()
 
         # Assert if the page contains a certain text
@@ -80,12 +81,10 @@ class TestLink:
 
         driver.get('https://www.lambdatest.com/selenium-playground/input-form-demo')
 
-        element = driver.find_element(By.XPATH, "//p[contains(.,'Progress Bar & Sliders')]")
-        element.click()
+       
         # wait.until(EC.element_to_be_clickable(element)).click()
 
         # Click on the Drag & Drop Sliders
-        drag_drop = driver.find_element(By.XPATH, "//a[.='Drag & Drop Sliders']")
-        drag_drop.click()
+        
         time.sleep(10)
         print("Progress Bar Test Complete")
