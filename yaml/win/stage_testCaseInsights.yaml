@@ -11,7 +11,7 @@ tunnel: false
 cacheKey: '{{ checksum "package.json" }}'
 cacheDirectories:
   - node_modules
-jobLabel: [ '${DATE}','ATX-testCaseInsights']
+jobLabel: [ '${DATE}','ATX-testCaseInsights','stage']
 runtime:
   language: node
   version: "18"
@@ -34,5 +34,5 @@ testDiscovery:
   mode: dynamic
   command: grep -lr 'describe' tests/specs/ATXtest.js
   # command: cat test.txt
-testRunnerCommand: npx wdio conf\wdio.conf.js --spec tests\specs\ATXtest.js
+testRunnerCommand: npx wdio conf\wdio.conf.js --spec ..\tests\specs\ATXtest.js
 # testRunnerCommand: npx wdio conf/wdio.conf.js --spec tests/specs/ATXtest.js
