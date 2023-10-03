@@ -31,14 +31,14 @@ exports.config = {
   user: process.env.LT_USERNAME,
   key: process.env.LT_ACCESS_KEY,
   buildName: process.env.LT_BUILD_NAME,
-  specs: ["./tests/specs/ATXtest.js"],
+  specs: ["../tests/specs/ATXtest.js"],
   exclude: [],
 
   capabilities: [
     {
       "LT:Options": {
       browserName: browser,
-      version: 114,
+      version: 116,
       name: "TestCase Insights test",
       // build: "Test Case Insights ATX n=1, 3 testcases try5",
       // build: "Test Case Insights ATX n=2, 6 testcases try11",
