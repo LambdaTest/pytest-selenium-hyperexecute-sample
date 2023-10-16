@@ -21,9 +21,14 @@ cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - CacheDir
 pre:
+  - pip install py
   - pip3 install -r requirements.txt --cache-dir CacheDir
 post:
   - cat yaml/mac/pytest_hyperexecute_matrix_sample.yaml
+
+runtime:
+  language: python
+  version: "3"
 
 mergeArtifacts: true
 
