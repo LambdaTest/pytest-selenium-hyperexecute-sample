@@ -1,0 +1,30 @@
+---
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+runson: win
+
+autosplit: true
+retryOnFailure: true
+
+maxRetries: 1
+concurrency: 1
+
+mergeArtifacts: true
+jobLabel: [ '${DATE} - ${DAY}', 'HE-ATX']
+
+cacheKey: '{{ checksum "requirements.txt" }}'
+cacheDirectories:
+  - CacheDir
+pre:
+  - pip3 install -r requirements.txt --cache-dir CacheDir
+
+testDiscovery:
+  type: raw
+  mode: dynamic
+  # command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//' | uniq
+  command: grep -nri 'class' tests -ir --include=v3_1.py | sed 's/:.*//' | uniq
+
+testRunnerCommand: python3 $test
