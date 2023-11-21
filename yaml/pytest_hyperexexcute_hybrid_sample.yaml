@@ -4,29 +4,34 @@ globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
 
-runson: mac
+runson: ${matrix.os}
 
 autosplit: true
 retryOnFailure: true
 
 maxRetries: 1
-concurrency: 2
+concurrency: 1
+parallelism: 1
+macParallelism: 1
+
+matrix:
+  os: ["linux", "win", "mac"]
+  files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
 
 mergeArtifacts: true
 
 env:
 #  PAT: ${{ .secrets.testKey }}
- TARGET_OS: MacOS Catalina
+ TARGET_OS: LINUX
 
-# Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
 cacheDirectories:
   - CacheDir
 pre:
   - pip install py
-  - pip3 install -r requirements.txt --cache-dir CacheDir
-post:
-  - cat yaml/mac/pytest_hyperexecute_autosplit_sample.yaml
+  - pip install autopep8==1.5.7
+  - pip install tomli
+  - pip install -r requirements.txt --cache-dir CacheDir
 
 runtime:
   language: python
@@ -42,6 +47,6 @@ testDiscovery:
   mode: dynamic
   command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
 
-testRunnerCommand: python3 -m pytest -s  --verbose --html=reports/report.html $test
+testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
 
-jobLabel: [selenium-pytest, mac, autosplit]
+jobLabel: [selenium-pytest, hybrid]
