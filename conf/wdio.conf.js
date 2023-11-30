@@ -5,6 +5,9 @@ let date = new Date();
 // convert to IST
 let istDate = new Date(date.toLocaleString('en-US', {timeZone: 'Asia/Kolkata'}));
 
+istDate.setMinutes(istDate.getMinutes() + 15);
+
+
 let year = istDate.getFullYear();
 let month = ('0' + (istDate.getMonth()+1)).slice(-2); // months are zero indexed
 let day = ('0' + istDate.getDate()).slice(-2);
