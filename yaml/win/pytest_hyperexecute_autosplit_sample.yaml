@@ -12,8 +12,6 @@ retryOnFailure: true
 maxRetries: 1
 concurrency: 2
 
-mergeArtifacts: true
-
 env:
 #  PAT: ${{ .secrets.testKey }}
  TARGET_OS: Windows 10
@@ -31,10 +29,17 @@ runtime:
   language: python
   version: "3"
 
+mergeArtifacts: true
 uploadArtefacts:
   - name: TestReports
     path:
     - reports/**
+
+report: true
+partialReports:
+    type: json
+    location: reports/
+    frameworkName: extent
 
 testDiscovery:
   type: raw
