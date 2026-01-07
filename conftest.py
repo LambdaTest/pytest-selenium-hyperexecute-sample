@@ -1,49 +1,45 @@
 import pytest
 import os
-from os import environ
 from selenium import webdriver
-from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.remote.remote_connection import RemoteConnection
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 @pytest.fixture(scope='function')
 def driver(request):
-
-    desired_caps = {}
-
-    browser = {
-        "platform": os.environ.get("TARGET_OS"),
-        "browserName": "chrome",
-        "version": "latest"
+    
+    options = ChromeOptions()
+    
+    # Browser configuration
+    options.browser_version = "latest"
+    options.platform_name = os.environ.get("TARGET_OS", "Windows 10")
+    
+    # LambdaTest specific options (Selenium 4 uses LT:Options capability)
+    lt_options = {
+        "build": "[Python] HyperTest demo using PyTest framework",
+        "name": request.node.name,
+        "video": True,
+        "visual": True,
+        "network": True,
+        "console": True
     }
-
-    desired_caps.update(browser)
-    test_name = request.node.name
-    build =  "[Python] HyperTest demo using PyTest framework"
+    options.set_capability("LT:Options", lt_options)
+    
     username = os.environ.get("LT_USERNAME")
     access_key = os.environ.get("LT_ACCESS_KEY")
-
-    selenium_endpoint = "https://{}:{}@hub.lambdatest.com/wd/hub".format(username, access_key)
-    desired_caps['build'] = build
-    desired_caps['name'] = test_name
-    desired_caps['video']= True
-    desired_caps['visual']= True
-    desired_caps['network']= True
-    desired_caps['console']= True
-
-    executor = RemoteConnection(selenium_endpoint, resolve_ip=False)
+    
+    selenium_endpoint = f"https://{username}:{access_key}@hub.lambdatest.com/wd/hub"
+    
     browser = webdriver.Remote(
-        command_executor=executor,
-        desired_capabilities=desired_caps
+        command_executor=selenium_endpoint,
+        options=options
     )
     yield browser
 
     def fin():
-        #browser.execute_script("lambda-status=".format(str(not request.node.rep_call.failed if "passed" else "failed").lower()))
         if request.node.rep_call.failed:
             browser.execute_script("lambda-status=failed")
         else:
             browser.execute_script("lambda-status=passed")
-            browser.quit()
+        browser.quit()
 
     request.addfinalizer(fin)
 
