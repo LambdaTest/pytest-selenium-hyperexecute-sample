@@ -1,4 +1,4 @@
-selenium==3.14
+selenium==4.39.0
 pytest-selenium
 flake8
 autopep8
