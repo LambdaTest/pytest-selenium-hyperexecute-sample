@@ -50,7 +50,7 @@ partialReports:
 
 testDiscovery:
   type: raw
-  mode: dynamic
+  mode: remote
   command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
 
 testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
