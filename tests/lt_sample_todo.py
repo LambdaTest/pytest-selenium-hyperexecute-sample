@@ -1,28 +1,48 @@
 import pytest
-import sys
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-@pytest.mark.usefixtures('driver')
-class TestLink:
-    def test_title(self, driver):
-        driver.get('https://lambdatest.github.io/sample-todo-app/')
-        driver.find_element(By.NAME, "li1").click()
-        driver.find_element(By.NAME, "li2").click()
 
-        title = "Modern To-Do App | LambdaTest"
-        assert title == driver.title
+@pytest.mark.usefixtures("driver")
+class TestSeleniumPlayground:
 
+    @pytest.mark.order(1)
+    def test_simple_form_demo(self, driver):
+        driver.get("https://testmuai.com/selenium-playground/simple-form-demo")
 
-    def test_item(self, driver):
-        driver.get('https://lambdatest.github.io/sample-todo-app/')
-        sample_text = "Happy Testing at LambdaTest"
-        email_text_field = driver.find_element(By.ID, "sampletodotext")
-        email_text_field.send_keys(sample_text)
+        message = "Welcome to TestMu AI"
 
-        driver.find_element(By.ID, "addbutton").click()
+        input_box = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "user-message"))
+        )
+        input_box.clear()
+        input_box.send_keys(message)
 
-        li6 = driver.find_element(By.NAME, "li6")
-        sys.stderr.write('li6')
+        driver.find_element(By.ID, "showInput").click()
+
+        output = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "message"))
+        ).text
+
+        assert output == message
+
+    @pytest.mark.order(2)
+    def test_simple_form_demo_second(self, driver):
+        driver.get("https://testmuai.com/selenium-playground/simple-form-demo")
+
+        message = "HyperExecute Rocks!"
+
+        input_box = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "user-message"))
+        )
+        input_box.clear()
+        input_box.send_keys(message)
+
+        driver.find_element(By.ID, "showInput").click()
+
+        output = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "message"))
+        ).text
+
+        assert output == message
