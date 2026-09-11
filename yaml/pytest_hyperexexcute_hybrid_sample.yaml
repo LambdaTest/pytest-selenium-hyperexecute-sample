@@ -1,5 +1,6 @@
 ---
 version: 0.1
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
@@ -15,44 +16,53 @@ parallelism: 1
 macParallelism: 1
 
 matrix:
-  os: ["linux", "win", "mac"]
-  files: ["tests/lt_sample_todo.py", "tests/lt_selenium_playground.py"]
+  os:
+    - linux
+    - win
+    - mac
+  files:
+    - "tests/lt_sample_todo.py"
+    - "tests/lt_selenium_playground.py"
+
+runtime:
+  language: python
+  version: "3.11"
 
 mergeArtifacts: true
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: LINUX
+  TARGET_OS: LINUX
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - CacheDir
-pre:
-  - pip install py
-  - pip install autopep8==1.5.7
-  - pip install tomli
-  - pip install -r requirements.txt --cache-dir CacheDir
 
-runtime:
-  language: python
-  version: "3"
+pre:
+  - python -m pip install py
+  - python -m pip install autopep8==1.5.7
+  - python -m pip install tomli
+  - python -m pip install -r requirements.txt --cache-dir CacheDir
 
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: reports/
-    frameworkName: extent
+  type: json
+  location: reports/
+  frameworkName: extent
 
 testDiscovery:
   type: raw
   mode: remote
   command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
 
-testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
+testRunnerCommand: python -m pytest -s --verbose --html=reports/report.html $test
 
-jobLabel: [selenium-pytest, hybrid]
+jobLabel:
+  - selenium-pytest
+  - hybrid

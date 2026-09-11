@@ -1,5 +1,10 @@
 ---
 version: 0.1
+
+runtime:
+  language: python
+  version: "3.11"
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
@@ -13,40 +18,41 @@ maxRetries: 1
 concurrency: 2
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: MacOS Catalina
+  TARGET_OS: MacOS Catalina
 
-# Dependency caching for Windows
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - CacheDir
+
 pre:
   - pip install py
   - pip3 install -r requirements.txt --cache-dir CacheDir
+
 post:
   - cat yaml/mac/pytest_hyperexecute_autosplit_sample.yaml
 
-runtime:
-  language: python
-  version: "3"
-
 mergeArtifacts: true
+
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: reports/
-    frameworkName: extent
+  type: json
+  location: reports/
+  frameworkName: extent
 
 testDiscovery:
   type: raw
   mode: remote
-  command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
+  command: 'grep -nri "class" tests --include="*.py" | cut -d: -f1 | sort -u'
 
-testRunnerCommand: python3 -m pytest -s  --verbose --html=reports/report.html $test
-
-jobLabel: [selenium-pytest, mac, autosplit]
+testRunnerCommand: python3 -m pytest -s --verbose --html=reports/report.html $test
+jobLabel:
+  - selenium-pytest
+  - mac
+  - autosplit

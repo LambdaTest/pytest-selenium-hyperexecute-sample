@@ -1,5 +1,10 @@
 ---
 version: 0.1
+
+runtime:
+  language: python
+  version: "3"
+
 globalTimeout: 90
 testSuiteTimeout: 90
 testSuiteStep: 90
@@ -13,39 +18,42 @@ maxRetries: 1
 concurrency: 2
 
 env:
-#  PAT: ${{ .secrets.testKey }}
- TARGET_OS: Windows 10
+  TARGET_OS: Windows 10
 
 cacheKey: '{{ checksum "requirements.txt" }}'
+
 cacheDirectories:
   - CacheDir
+
 pre:
   - pip install py
   - pip3 install -r requirements.txt --cache-dir CacheDir
-post:
-  - cat yaml/win/pytest_hyperexecute_autosplit_sample.yaml
 
-runtime:
-  language: python
-  version: "3"
+post:
+  - type yaml\win\pytest_hyperexecute_autosplit_sample.yaml
 
 mergeArtifacts: true
+
 uploadArtefacts:
   - name: TestReports
     path:
-    - reports/**
+      - reports/**
 
 report: true
+
 partialReports:
-    type: json
-    location: reports/
-    frameworkName: extent
+  type: json
+  location: reports/
+  frameworkName: extent
 
 testDiscovery:
   type: raw
   mode: remote
-  command: grep -nri 'class' tests -ir --include=\*.py | sed 's/:.*//'
+  command: dir /s /b tests\*.py
 
-testRunnerCommand: pytest -s  --verbose --html=reports/report.html $test
+testRunnerCommand: pytest -s --verbose --html=reports/report.html $test
 
-jobLabel: [selenium-pytest, win, autosplit]
+jobLabel:
+  - selenium-pytest
+  - win
+  - autosplit
