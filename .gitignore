@@ -8,3 +8,8 @@ nucleus.log
 artifacts*/
 hyperexecute
 hyperexecute-cli.log
+node_modules/
+hyperexecute.exe
+.hyperexecute.exe.old
+hyperexecuteupdate
+hyperexecute-code-*.zip
